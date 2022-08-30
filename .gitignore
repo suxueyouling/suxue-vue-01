@@ -1,19 +1,20 @@
 .DS_Store
 node_modules
 /dist
+# 罗列的是忽略文件
 
 
-# local env files
+# 本地配置文件
 .env.local
 .env.*.local
 
-# Log files
+# 日志文件
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Editor directories and files
+# 编辑器以及文件
 .idea
 .vscode
 *.suo

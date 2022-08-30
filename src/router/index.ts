@@ -1,22 +1,41 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+
+// 把这段代码直接粘贴到router/index.js中的Vue.use(VueRouter)之前
+// const originalPush = VueRouter.prototype.push;
+// VueRouter.prototype.push = function (location) {
+//   return originalPush.call(this, location).catch(err => { })
+// };
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
+const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    redirect:"/home"
   },
-  // 删除了脚手架的默认组件views文件夹下的About组件，也要对应的删除路由
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // 魔法注释
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/goods',
+    component: () => import(/* webpackChunkName: "goods" */ '../views/Goods.vue')
+  },
+  {
+    path: '/user',
+    component: () => import(/* webpackChunkName: "user" */ '../views/User.vue')
+  },
+  {
+    path: '/order',
+    component: () => import(/* webpackChunkName: "order" */ '../views/Order.vue')
+  },
+  {
+    path: '/free',
+    component: () => import(/* webpackChunkName: "free" */ '../views/Free.vue')
+  }
 ]
 
 const router = new VueRouter({
